@@ -19,7 +19,6 @@ function sumaGanancias(importes) {
   }
   return suma;
 }
-sumaGanancias(importes); // Llamamos a la función y mostramos el resultado
 console.log(
   "El resultado de la suma de los meses de ganancia es de: $",
   sumaGanancias(importes)
@@ -62,13 +61,13 @@ let asientoSolicitado = 10;
 function verificarAsiento(asientosDisponibles, asientoSolicitado) {
   if (asientosDisponibles.includes(asientoSolicitado)) {
     console.log(
-      `Felicitaciones, el asiento número ${asientoSolicitado} está disponible`
+      `Felicitaciones, el asiento número ${asientoSolicitado} está disponible.`
     );
     return;
   } else {
     let asientosRestantes = asientosDisponibles.length;
     console.log(
-      `Lo sentimos, el asiento número ${asientoSolicitado} está ocupado, pero aún quedan ${asientosRestantes} asientos disponibles`
+      `Lo sentimos, el asiento número ${asientoSolicitado} no está disponible, pero aún quedan ${asientosRestantes} asientos disponibles para elegir.`
     );
     return;
   }
@@ -118,49 +117,35 @@ En cada estación normal:
 //  El tren llega a destino y no quedan pasajeros.
   */
 console.log("-*-*-*-*-*-*-*-*-*-*Ejercicio 3 *-*-*-*-*-*-*-");
-let pasajeros = 200; // Pasajeros iniciales
-let estaciones = 9; // Total de estaciones
-let reporte = []; // Array para almacenar el reporte de pasajeros por estación
 
 function cantidadPasajeros(estaciones) {
   console.log("Reporte de pasajeros por estación: ");
+  let pasajeros = 200; // Pasajeros iniciales
+  let reporte = []; // Array para almacenar el reporte de pasajeros por estación
   for (let i = 1; i <= estaciones; i++) {
+    let mensaje = "";
     if (i === 1) {
       // Estación 1
-      reporte.push(
-        console.log(
-          `Estación ${i}: Suben ${pasajeros} pasajeros. Bajan 0 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`
-        )
-      );
+      mensaje = `Estación ${i}: Suben ${pasajeros} pasajeros. Bajan 0 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`;
     } else if (i === 5) {
       // Estación Olimpo
       pasajeros += 120 - 80; // Suben 120 y bajan 80
-      reporte.push(
-        console.log(
-          `Estación ${i}: Suben 120 pasajeros. Bajan 80 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`
-        )
-      );
-    } else if (i === 9) {
+      mensaje = `Estación ${i}: Suben 120 pasajeros. Bajan 80 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`;
+    } else if (i === estaciones) {
       // Última estación
-      reporte.push(
-        console.log(
-          `Estación ${i}: Bajan los ${pasajeros} pasajeros del tren. |  El tren llegó a destino.`
-        )
-      );
+      mensaje = `Estación ${i}: Bajan los ${pasajeros} pasajeros del tren. |  El tren llegó a destino.`;
     } else {
       // Otras estaciones
       pasajeros += 50 - 30; // Suben 50 y bajan 30
-      reporte.push(
-        console.log(
-          `Estación ${i}: Suben 50 pasajeros. Bajan 30 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`
-        )
-      );
+      mensaje = `Estación ${i}: Suben 50 pasajeros. Bajan 30 pasajeros.  |  Total de pasajeros en el tren: ${pasajeros}`;
     }
+    reporte.push(mensaje); // 1. Guardo el mensaje en el array
+    console.log(mensaje); // 2. Imprimo el mensaje en consola
   }
 
   return reporte;
 }
-cantidadPasajeros(estaciones); // Llamamos a la función para obtener el reporte
+cantidadPasajeros(9); // Llamamos a la función para obtener el reporte
 
 /*✅ Ejercicio 4
 ### 🧪 Ejercicio: FizzBuzz con `for` y `while`
